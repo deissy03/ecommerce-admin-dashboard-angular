@@ -1,0 +1,249 @@
+@if(!isLoggedIn){
+
+<div class="login-container">
+
+  <div class="login-card">
+
+    <h1>Login</h1>
+    <p>Bienvenida al panel administrativo</p>
+
+    <form>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" placeholder="Ingresa tu correo">
+      </div>
+
+      <div class="input-group">
+        <label>Contraseña</label>
+        <input type="password" placeholder="Ingresa tu contraseña">
+      </div>
+
+      <button type="button" (click)="login()">
+        Ingresar
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+}
+
+@else {
+
+<div class="dashboard">
+
+  <aside class="sidebar">
+
+    <h2>Dashboard</h2>
+
+    <ul>
+
+      <li (click)="changeSection('Inicio')">
+        <i class="bi bi-house"></i> Inicio
+      </li>
+
+      <li (click)="changeSection('Productos')">
+        <i class="bi bi-box"></i> Productos
+      </li>
+
+      <li (click)="changeSection('Usuarios')">
+        <i class="bi bi-people"></i> Usuarios
+      </li>
+
+      <li (click)="changeSection('Pedidos')">
+        <i class="bi bi-bag"></i> Pedidos
+      </li>
+
+      <li (click)="changeSection('Configuración')">
+        <i class="bi bi-gear"></i> Configuración
+      </li>
+
+    </ul>
+
+  </aside>
+
+  <main class="content">
+
+    <header class="header">
+      <h1>{{ currentSection }}</h1>
+    </header>
+
+    @if(currentSection === 'Inicio'){
+
+    <section class="cards">
+
+      <div class="card sales">
+        <div class="card-info">
+          <h3>Ventas</h3>
+          <p>$12,500</p>
+        </div>
+        <i class="bi bi-currency-dollar"></i>
+      </div>
+
+      <div class="card users">
+        <div class="card-info">
+          <h3>Usuarios</h3>
+          <p>1,250</p>
+        </div>
+        <i class="bi bi-people-fill"></i>
+      </div>
+
+      <div class="card orders">
+        <div class="card-info">
+          <h3>Pedidos</h3>
+          <p>320</p>
+        </div>
+        <i class="bi bi-bag-check-fill"></i>
+      </div>
+
+      <div class="card products">
+        <div class="card-info">
+          <h3>Productos</h3>
+          <p>85</p>
+        </div>
+        <i class="bi bi-box-seam"></i>
+      </div>
+
+    </section>
+
+    <section class="chart-section">
+      <h2>Ventas mensuales</h2>
+      <canvas id="salesChart"></canvas>
+    </section>
+
+    }
+
+    @if(currentSection === 'Productos'){
+
+    <section class="table-section">
+
+      <div class="table-header">
+        <h2>Lista de productos</h2>
+      </div>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Stock</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Bolso Elegance</td>
+            <td>$120</td>
+            <td>25</td>
+          </tr>
+
+          <tr>
+            <td>Bolso Luxury</td>
+            <td>$250</td>
+            <td>8</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+    }
+
+    @if(currentSection === 'Usuarios'){
+
+    <section class="table-section">
+
+      <div class="table-header">
+        <h2>Usuarios registrados</h2>
+      </div>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>Ana López</td>
+            <td>ana@email.com</td>
+          </tr>
+
+          <tr>
+            <td>Carlos Ruiz</td>
+            <td>carlos@email.com</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+    }
+
+    @if(currentSection === 'Pedidos'){
+
+    <section class="table-section">
+
+      <div class="table-header">
+        <h2>Pedidos recientes</h2>
+      </div>
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Cliente</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr>
+            <td>#001</td>
+            <td>María</td>
+            <td>$320</td>
+          </tr>
+
+          <tr>
+            <td>#002</td>
+            <td>Juan</td>
+            <td>$180</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+    }
+
+    @if(currentSection === 'Configuración'){
+
+    <section class="table-section">
+      <h2>Configuración del sistema</h2>
+      <p>Aquí podrás administrar preferencias del dashboard.</p>
+    </section>
+
+    }
+
+  </main>
+
+</div>
+
+}
